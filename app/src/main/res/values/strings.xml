@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">MyCalendar</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="drawer_open">開啓導航抽屜</string>
+    <string name="drawer_close">關閉導航抽屜</string>
+    <string name="description">描述</string>
+
+    <integer-array name="drawer_menuIcon">
+        <item>@drawable/calendar_3</item>
+        <item>@drawable/calendar</item>
+        <item>@drawable/calendar_1</item>
+        <item>@drawable/calendar_5</item>
+        <item>@drawable/calendar_6</item>
+        <item>@drawable/calendar_4</item>
+        <item>@drawable/calendar_2</item>
+        <item>@drawable/calendar_7</item>
+    </integer-array>
+
+    <string-array name="drawer_menu">
+        <item>Calender View</item>
+        <item>Calender Add</item>
+        <item>Calender Edit</item>
+        <item>Calender Delete</item>
+        <item>Calender 5</item>
+        <item>Calender 6</item>
+        <item>Calender 7</item>
+        <item>Calender 8</item>
+    </string-array>
+
+    <string name="action_refresh">重新整理</string>
+    <string name="action_edit">編輯</string>
+    <string name="action_search">搜尋</string>
+    <string name="action_info">軟體資訊</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="my_calender">今天日期</string>
 </resources>
