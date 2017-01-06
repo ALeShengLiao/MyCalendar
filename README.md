@@ -1,35 +1,37 @@
 Gradle Version 2.14.1  
 Android Plugin Version 2.2.2  
-compileSdkVersion 25  
-buildToolsVersion "25.0.0"  
+compileSdkVersion 24  
+buildToolsVersion "21.1.1"  
 minSdkVersion 15  
-targetSdkVersion 25  
+targetSdkVersion 24  
 ******************
 需要功能  
 1.啟動icon ( launch icon )  
 2.必須：
-
-    (1)側拉選單(Navigation Drawer)
-    (2)選單列(menu bar)
-    (3)浮動按鈕(FAB)
+~~~~~~~~~~~~
+(1)側拉選單(Navigation Drawer) (v)
+(2)選單列(menu bar) (v)
+(3)浮動按鈕(FAB) (v)
+~~~~~~~~~~~~
 3.至少選三樣：
-
-    (1)ListView
-    (2)GridView
-    (3)動態 UI 設計(片段,Fragment)
-    (4)Dialog Box
-    (5)Spinner
-    (6)Picker
+~~~~~~~~~~~~
+(1)ListView (v)
+(2)GridView (v)
+(3)動態 UI 設計(片段,Fragment) (v)
+(4)Dialog Box (o)
+(5)Spinner (o)
+(6)Picker
+~~~~~~~~~~~~
 4.至少選四樣：
-
-    (1)SQLite
-    (2)Content
-    (3)Provider
-    (4)Google Map
-    (5)Notification
-    (6)Service
-    (7)Broadcast Receiver    
-
+~~~~~~~~~~~~
+(1)SQLite (o)
+(2)Content
+(3)Provider
+(4)Google Map
+(5)Notification (o)
+(6)Service (o)
+(7)Broadcast Receiver (o)
+~~~~~~~~~~~~
 ******************
 預覽  
 ![preview picture](preview/preview1.png)  
