@@ -1,13 +1,12 @@
 package com.example.sheng.mycalendar;
 
-
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentBook extends Fragment {
+public class FragmentDelete extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -19,5 +18,4 @@ public class FragmentBook extends Fragment {
 
         return view;
     }
-
 }

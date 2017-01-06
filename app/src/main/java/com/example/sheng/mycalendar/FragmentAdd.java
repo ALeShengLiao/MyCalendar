@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 
-public class FragmentCat extends Fragment {
+public class FragmentAdd extends Fragment {
 
     public static final String CAT_COLOR = "cat_color";
 

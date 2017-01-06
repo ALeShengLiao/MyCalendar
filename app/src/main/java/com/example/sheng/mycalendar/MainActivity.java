@@ -2,15 +2,16 @@ package com.example.sheng.mycalendar;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,23 +21,31 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
 
+    private Context context;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList; // 左邊選單List
     private ActionBarDrawerToggle drawerToggle;
     private TypedArray drawer_menuIcon;
     private String[] drawer_menu;
+    private Fragment fragment = null;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer);
 
+        context = this;
         int drawerListItem = 4;
 
         initActionBar();
@@ -46,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
             selectItem(0);
         }
     }
+
 
 
     //================================================================================
@@ -128,19 +138,21 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void selectItem(int position) {
-        Fragment fragment = null;
         switch (position) {
             case 0:
                 fragment = new FragmentMain();
                 break;
             case 1:
-                fragment = new FragmentBook();
+                fragment = new FragmentAdd();
+                Bundle args = new Bundle();
+                args.putString(FragmentAdd.CAT_COLOR, "Brown");
+                fragment.setArguments(args);
                 break;
             case 2:
-                fragment = new FragmentCat();
-                Bundle args = new Bundle();
-                args.putString(FragmentCat.CAT_COLOR, "Brown");
-                fragment.setArguments(args);
+                fragment = new FragmentEdit();
+                break;
+            case 3:
+                fragment = new FragmentDelete();
                 break;
             default:
                 //還沒製作的選項，fragment 是 null，直接返回
@@ -148,15 +160,15 @@ public class MainActivity extends ActionBarActivity {
         }
         FragmentManager fragmentManager = getFragmentManager();
         //[方法1]直接置換，無法按 Back 返回
-//        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         //[方法2]開啟並將前一個送入堆疊
         //重要！ 必須加寫 "onBackPressed"
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        /*FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, fragment);
         fragmentTransaction.addToBackStack("home");
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
 
 
         // 更新被選擇項目，換標題文字，關閉選單
@@ -177,31 +189,27 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        FragmentManager fragmentManager = this.getFragmentManager();
+        /*FragmentManager fragmentManager = this.getFragmentManager();
         int stackCount = fragmentManager.getBackStackEntryCount();
         if (stackCount == 0) {
             this.finish();
+        }*/
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
         }
-    }
-/*
-    public void initCalender() {
-        HashSet<Date> events = new HashSet<>();
-        events.add(new Date());
 
-        CalendarView cv = ((CalendarView)findViewById(R.id.calendar_view));
-        cv.updateCalendar(events);
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
 
-        // assign event handler
-        cv.setEventHandler(new CalendarView.EventHandler()
-        {
             @Override
-            public void onDayLongPress(Date date)
-            {
-                // show returned day
-                DateFormat df = SimpleDateFormat.getDateInstance();
-                Toast.makeText(MainActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+            public void run() {
+                doubleBackToExitPressedOnce=false;
             }
-        });
-    }*/
+        }, 2000);
+    }
+
+
 
 }
