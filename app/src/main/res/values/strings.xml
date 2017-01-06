@@ -3,7 +3,7 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="no_record">No record !</string>
     <string name="drawer_open">開啓導航抽屜</string>
     <string name="drawer_close">關閉導航抽屜</string>
     <string name="description">描述</string>
@@ -28,6 +28,15 @@
         <item>Calender 6</item>
         <item>Calender 7</item>
         <item>Calender 8</item>
+    </string-array>
+
+    <string-array name="things">
+        <item>COCA Light</item>
+        <item>COCA Zero</item>
+        <item>COCA</item>
+        <item>French Fries</item>
+        <item>Hamburger</item>
+        <item>KFC</item>
     </string-array>
 
     <string name="action_refresh">重新整理</string>

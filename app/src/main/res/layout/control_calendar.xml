@@ -23,14 +23,14 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/previous"
             android:id="@+id/calendar_prev_button"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"/>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/next"
             android:id="@+id/calendar_next_button"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
     <LinearLayout

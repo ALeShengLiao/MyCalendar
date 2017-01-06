@@ -144,9 +144,6 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case 1:
                 fragment = new FragmentAdd();
-                Bundle args = new Bundle();
-                args.putString(FragmentAdd.CAT_COLOR, "Brown");
-                fragment.setArguments(args);
                 break;
             case 2:
                 fragment = new FragmentEdit();

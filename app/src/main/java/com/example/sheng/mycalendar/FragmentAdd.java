@@ -15,15 +15,11 @@ import java.util.HashSet;
 
 public class FragmentAdd extends Fragment {
 
-    public static final String CAT_COLOR = "cat_color";
-
-    private String color = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        color = this.getArguments().getString(CAT_COLOR);
     }
 
     @Override
@@ -32,11 +28,7 @@ public class FragmentAdd extends Fragment {
     }
 
     private View initView(LayoutInflater inflater, ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_cat, container, false);
-
-        TextView txtCat = (TextView) view.findViewById(R.id.txtCat);
-        String colorCat = color + " " + txtCat.getText().toString();
-        txtCat.setText(colorCat);
+        View view = inflater.inflate(R.layout.fragment_add, container, false);
 
         return view;
     }

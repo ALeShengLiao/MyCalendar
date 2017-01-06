@@ -25,7 +25,7 @@ targetSdkVersion 25
     (1)SQLite
     (2)Content
     (3)Provider
-    (4)Google Ma
+    (4)Google Map
     (5)Notification
     (6)Service
     (7)Broadcast Receiver    
@@ -33,6 +33,9 @@ targetSdkVersion 25
 ******************
 預覽  
 ![preview picture](preview/preview1.png)  
+![preview picture](preview/preview2.png)  
+![preview picture](preview/preview3.png)  
+![preview picture](preview/preview4.png)  
 ************
 
 2017/1/4  
