@@ -11,25 +11,25 @@ targetSdkVersion 24
 ~~~~~~~~~~~~
 (1)側拉選單(Navigation Drawer) (v)
 (2)選單列(menu bar) (v)未實作
-(3)浮動按鈕(FAB) (v)未實作
+(3)浮動按鈕(FAB) (v)只有實作Add
 ~~~~~~~~~~~~
 3.至少選三樣：
 ~~~~~~~~~~~~
 (1)ListView (v) 列出所有行程 未實作
 (2)GridView (v) 在calendarView中實現
 (3)動態 UI 設計(片段,Fragment) (v) 全部利用這個做動態處理
-(4)Dialog Box (o)
-(5)Spinner (o)
+(4)Dialog Box (v) Add中多欄位Dialog
+(5)Spinner (x)
 (6)Picker (v) 可設定時間
 ~~~~~~~~~~~~
 4.至少選四樣：
 ~~~~~~~~~~~~
-(1)SQLite (o)
-(2)Content
-(3)Provider
-(4)Google Map
+(1)SQLite (x)
+(2)Content (x)
+(3)Provider (x)
+(4)Google Map (x)
 (5)Notification (v) 時間到會提醒
-(6)Service (o)
+(6)Service (v) intentService
 (7)Broadcast Receiver (v) 用這個來實現行程
 ~~~~~~~~~~~~
 ******************

@@ -9,7 +9,12 @@
     <string name="no_record">No record !</string>
     <string name="drawer_open">開啓導航抽屜</string>
     <string name="drawer_close">關閉導航抽屜</string>
+    <string name="title">標題</string>
     <string name="description">描述</string>
+    <string name="location">位置</string>
+    <string name="ok">確定</string>
+    <string name="cancel">取消</string>
+    <string name="selectDate">What date do you want?</string>
 
     <integer-array name="drawer_menuIcon">
         <item>@drawable/calendar_3</item>

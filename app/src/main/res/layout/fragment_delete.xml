@@ -16,11 +16,11 @@
             android:layout_weight="1" />
 
         <TextView
-            android:text="you_delete"
+            android:text="@string/selectDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView1"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textAlignment="center" />
 
         <ListView
@@ -37,6 +37,8 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:background="@drawable/ripple"
             android:id="@+id/fab_del"
             app:srcCompat="@android:drawable/ic_delete"
             android:layout_alignParentBottom="true"

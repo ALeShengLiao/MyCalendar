@@ -6,11 +6,10 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textAlignment="center">
     </TextView>
 
