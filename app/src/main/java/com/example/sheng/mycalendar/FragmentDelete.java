@@ -22,7 +22,6 @@ public class FragmentDelete extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getActivity();
-
     }
 
     // 回呼狀態 : Fragment 即將可以顯示在螢幕時
@@ -30,7 +29,6 @@ public class FragmentDelete extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_delete, container, false);
-
         return view;
     }
 

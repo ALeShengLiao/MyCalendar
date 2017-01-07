@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,7 +47,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.drawer);
 
         context = this;
-        int drawerListItem = 4;
+        Log.i("MainCreate", context+"");
+        int drawerListItem = 5;
 
         initActionBar();
         initDrawer();
@@ -114,14 +116,10 @@ public class MainActivity extends ActionBarActivity {
         }
         //action buttons
         switch (item.getItemId()) {
-            case R.id.action_edit:
-                //....
+            case R.id.start_action:
                 break;
-
-            case R.id.action_search:
-                //....
+            case R.id.cancel_action:
                 break;
-
             default:
                 break;
         }
@@ -151,21 +149,24 @@ public class MainActivity extends ActionBarActivity {
             case 3:
                 fragment = new FragmentDelete();
                 break;
+            case 4:
+                fragment = new FragmentAlarm();
+                break;
             default:
                 //還沒製作的選項，fragment 是 null，直接返回
                 return;
         }
         FragmentManager fragmentManager = getFragmentManager();
         //[方法1]直接置換，無法按 Back 返回
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        //fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
         //[方法2]開啟並將前一個送入堆疊
         //重要！ 必須加寫 "onBackPressed"
-        /*FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, fragment);
-        fragmentTransaction.addToBackStack("home");
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fragmentTransaction.commit();*/
+        //fragmentTransaction.addToBackStack("home");
+        //fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fragmentTransaction.commit();
 
 
         // 更新被選擇項目，換標題文字，關閉選單
@@ -191,22 +192,20 @@ public class MainActivity extends ActionBarActivity {
         if (stackCount == 0) {
             this.finish();
         }*/
+
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed();
+            System.exit(0);
             return;
         }
-
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
-                doubleBackToExitPressedOnce=false;
+                doubleBackToExitPressedOnce = false;
             }
         }, 2000);
     }
-
-
-
 }

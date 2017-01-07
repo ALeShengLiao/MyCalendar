@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MyCalendar</string>
 
+    <string name="start_text">Start Alarm</string>
+    <string name="cancel_text">Cancel Alarm</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="no_record">No record !</string>
@@ -13,7 +16,7 @@
         <item>@drawable/calendar</item>
         <item>@drawable/calendar_1</item>
         <item>@drawable/calendar_5</item>
-        <item>@drawable/calendar_6</item>
+        <item>@drawable/alarm</item>
         <item>@drawable/calendar_4</item>
         <item>@drawable/calendar_2</item>
         <item>@drawable/calendar_7</item>
@@ -24,7 +27,7 @@
         <item>Calender Add</item>
         <item>Calender Edit</item>
         <item>Calender Delete</item>
-        <item>Calender 5</item>
+        <item>Alarm</item>
         <item>Calender 6</item>
         <item>Calender 7</item>
         <item>Calender 8</item>

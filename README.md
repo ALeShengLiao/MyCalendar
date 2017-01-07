@@ -10,17 +10,17 @@ targetSdkVersion 24
 2.必須：
 ~~~~~~~~~~~~
 (1)側拉選單(Navigation Drawer) (v)
-(2)選單列(menu bar) (v)
-(3)浮動按鈕(FAB) (v)
+(2)選單列(menu bar) (v)未實作
+(3)浮動按鈕(FAB) (v)未實作
 ~~~~~~~~~~~~
 3.至少選三樣：
 ~~~~~~~~~~~~
-(1)ListView (v)
-(2)GridView (v)
-(3)動態 UI 設計(片段,Fragment) (v)
+(1)ListView (v) 列出所有行程 未實作
+(2)GridView (v) 在calendarView中實現
+(3)動態 UI 設計(片段,Fragment) (v) 全部利用這個做動態處理
 (4)Dialog Box (o)
 (5)Spinner (o)
-(6)Picker
+(6)Picker (v) 可設定時間
 ~~~~~~~~~~~~
 4.至少選四樣：
 ~~~~~~~~~~~~
@@ -28,9 +28,9 @@ targetSdkVersion 24
 (2)Content
 (3)Provider
 (4)Google Map
-(5)Notification (o)
+(5)Notification (v) 時間到會提醒
 (6)Service (o)
-(7)Broadcast Receiver (o)
+(7)Broadcast Receiver (v) 用這個來實現行程
 ~~~~~~~~~~~~
 ******************
 預覽  

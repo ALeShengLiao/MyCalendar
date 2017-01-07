@@ -28,4 +28,12 @@
         android:orderInCategory="3"
         android:showAsAction="ifRoom|withText"
         android:title="@string/action_search"/>
+
+    <item android:id="@+id/start_action"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/start_text" />
+
+    <item android:id="@+id/cancel_action"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/cancel_text" />
 </menu>
