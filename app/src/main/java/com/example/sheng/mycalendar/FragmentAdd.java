@@ -1,9 +1,10 @@
 package com.example.sheng.mycalendar;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -14,7 +15,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import java.util.Calendar;
+
+import com.example.sheng.mycalendar.db.DBHelper;
+
+import java.sql.Date;
+
 
 public class FragmentAdd extends Fragment {
 
@@ -24,6 +29,8 @@ public class FragmentAdd extends Fragment {
     private String title;
     private String description;
     private String location;
+    private DBHelper dbHelper;
+    private SQLiteDatabase db;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,10 @@ public class FragmentAdd extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        dbHelper = new DBHelper(context);
+        db = dbHelper.getWritableDatabase();
+
         datePicker = (DatePicker)getActivity().findViewById(R.id.datePicker);
         fab = (ImageButton)getActivity().findViewById(R.id.fab_add);
 
@@ -55,25 +66,32 @@ public class FragmentAdd extends Fragment {
     //多欄位輸入型對話框
     private void showDialog()
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        // 自定Layout
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        // 使用你設計的layout
+        // 將 xml layout 轉換成視圖 View 物件
         final View inputView = inflater.inflate(R.layout.dialog_input,
                 (ViewGroup) getActivity().findViewById(R.id.input_layout));
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(inputView);
+
         final EditText input1 = (EditText)inputView.findViewById(R.id.input_title);
         final EditText input2 = (EditText)inputView.findViewById(R.id.input_description);
         final EditText input3 = (EditText)inputView.findViewById(R.id.input_location);
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
+
                 title = input1.getText().toString();
                 description = input2.getText().toString();
                 location = input3.getText().toString();
+
                 // Log.d("dialog",title+"\ndescription"+description+"\nlocation"+location);
                 if(!title.isEmpty()){
                     Toast.makeText(context, "Add an event", Toast.LENGTH_SHORT).show();
                     add();
+                    // 將資料匯入ListView
+                    // getFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentAdd()).commit();
+                    dialog.dismiss();
                 }
             }
         });
@@ -81,6 +99,7 @@ public class FragmentAdd extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.d("dialog","cancel");
+                dialog.dismiss();
             }
         });
         builder.show();
@@ -88,35 +107,19 @@ public class FragmentAdd extends Fragment {
 
 
     public void add(){
-        int year = datePicker.getYear();
-        int month = datePicker.getMonth()+1;
-        int day = datePicker.getDayOfMonth();
-        String tmpStr = year + "-" + month + "-" + day;
-        Toast.makeText(context, "Add "+ tmpStr, Toast.LENGTH_SHORT).show();
-        Calendar whatTime = Calendar.getInstance();
-        whatTime.set(year, month, day);
-        /*
-        //建立事件開始時間
-        Calendar beginTime = Calendar.getInstance();
-        beginTime.set(year, month, day, 0, 0);
-        //建立事件結束時間
-        Calendar endTime = Calendar.getInstance();
-        endTime.set(year, month, day, 0, 0);
-        */
+        Date date = new Date(datePicker.getYear()-1900, datePicker.getMonth(), datePicker.getDayOfMonth());
+        Toast.makeText(context, "Add "+ date, Toast.LENGTH_SHORT).show();
+        //Log.i("date", date+"");
 
-        //建立 CalendarIntentHelper 實體
-        CalendarIntentHelper calIntent = new CalendarIntentHelper();
-        //設定值
-        calIntent.setTitle(title);
-        calIntent.setDescription(description);
-        calIntent.setAllDay(true);
-        //calIntent.setBeginTimeInMillis(beginTime.getTimeInMillis());
-        //calIntent.setEndTimeInMillis(endTime.getTimeInMillis());
-        calIntent.setLocation(location);
-        //全部設定好後就能夠取得 Intent
-        Intent intent = calIntent.getIntentAfterSetting();
-        //送出意圖
-        startActivity(intent);
+        // 將記錄新增到things資料表的參數
+        ContentValues cv = new ContentValues();
+        cv.put("title", title);
+        cv.put("description", description);
+        cv.put("location", location);
+        cv.put("date", date.toString());
+        // 執行SQL語句
+        long id = db.insert("things_list", null, cv);
+        Toast.makeText(context, "_id：" + id, Toast.LENGTH_SHORT).show();
     }
 
 }

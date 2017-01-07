@@ -30,7 +30,7 @@ public class CalendarView extends LinearLayout {
     private static final int DAYS_COUNT = 42;
 
     // default date format
-    private static final String DATE_FORMAT = "MMM yyyy";
+    private static final String DATE_FORMAT = "yyyy - MMM";
 
     // date format
     private String dateFormat;

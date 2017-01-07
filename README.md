@@ -24,7 +24,7 @@ targetSdkVersion 24
 ~~~~~~~~~~~~
 4.至少選四樣：
 ~~~~~~~~~~~~
-(1)SQLite (x)
+(1)SQLite (v) 紀錄事項
 (2)Content (x)
 (3)Provider (x)
 (4)Google Map (x)
