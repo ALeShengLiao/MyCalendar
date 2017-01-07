@@ -24,7 +24,7 @@ targetSdkVersion 24
 ~~~~~~~~~~~~
 4.至少選四樣：
 ~~~~~~~~~~~~
-(1)SQLite (v) 紀錄事項
+(1)SQLite (v) 紀錄事項 只有新增
 (2)Content (x)
 (3)Provider (x)
 (4)Google Map (x)
@@ -39,7 +39,15 @@ targetSdkVersion 24
 ![preview picture](preview/preview3.png)  
 ![preview picture](preview/preview4.png)  
 ************
-
+2017/1/8
+1.新增SQLite並且可以新增且顯示在FragmentDetial上
+2017/1/7
+1.新增FAB,ListView,Fragment
+2.新增通知,wakeRecevicer,picker
+3.更新FragmentAdd
+2017/1/6
+1.修正錯誤
+2.更新drawer
 2017/1/4  
 1.上傳github：
 https://github.com/ALeShengLiao/MyCalendar.git  
