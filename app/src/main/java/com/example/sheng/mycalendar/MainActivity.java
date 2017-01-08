@@ -136,18 +136,28 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void selectItem(int position) {
+        Bundle args;
         switch (position) {
             case 0:
                 fragment = new FragmentMain();
                 break;
             case 1:
-                fragment = new FragmentAdd();
+                fragment = new FragmentDelEdit();
+                args = new Bundle();
+                args.putSerializable("CONTAINER_FRAGMENT", new FragmentAdd());
+                fragment.setArguments(args);
                 break;
             case 2:
-                fragment = new FragmentEdit();
+                fragment = new FragmentDelEdit();
+                args = new Bundle();
+                args.putSerializable("CONTAINER_FRAGMENT", new FragmentEdit());
+                fragment.setArguments(args);
                 break;
             case 3:
-                fragment = new FragmentDelete();
+                fragment = new FragmentDelEdit();
+                args = new Bundle();
+                args.putSerializable("CONTAINER_FRAGMENT", new FragmentDelete());
+                fragment.setArguments(args);
                 break;
             case 4:
                 fragment = new FragmentAlarm();

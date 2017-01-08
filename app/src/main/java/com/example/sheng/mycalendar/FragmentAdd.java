@@ -18,10 +18,11 @@ import android.widget.Toast;
 
 import com.example.sheng.mycalendar.db.DBHelper;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 
-public class FragmentAdd extends Fragment {
+public class FragmentAdd extends Fragment implements Serializable {
 
     private Context context;
     private DatePicker datePicker;
@@ -41,19 +42,10 @@ public class FragmentAdd extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
-
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
         dbHelper = new DBHelper(context);
         db = dbHelper.getWritableDatabase();
-
-        datePicker = (DatePicker)getActivity().findViewById(R.id.datePicker);
-        fab = (ImageButton)getActivity().findViewById(R.id.fab_add);
+        datePicker = (DatePicker)view.findViewById(R.id.datePicker);
+        fab = (ImageButton)view.findViewById(R.id.fab_add);
 
         fab.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -61,6 +53,8 @@ public class FragmentAdd extends Fragment {
                 showDialog();
             }
         });
+
+        return view;
     }
 
     //多欄位輸入型對話框
@@ -90,7 +84,7 @@ public class FragmentAdd extends Fragment {
                     Toast.makeText(context, "Add an event", Toast.LENGTH_SHORT).show();
                     add();
                     // 將資料匯入ListView
-                    // getFragmentManager().beginTransaction().replace(R.id.content_frame, new FragmentAdd()).commit();
+                    refreshAll();
                     dialog.dismiss();
                 }
             }
@@ -122,4 +116,11 @@ public class FragmentAdd extends Fragment {
         Toast.makeText(context, "_id：" + id, Toast.LENGTH_SHORT).show();
     }
 
+    public void refreshAll(){
+        Fragment frag = new FragmentDelEdit();
+        Bundle args = new Bundle();
+        args.putSerializable("CONTAINER_FRAGMENT", new FragmentAdd());
+        frag.setArguments(args);
+        getFragmentManager().beginTransaction().replace(R.id.content_frame, frag).commit();
+    }
 }

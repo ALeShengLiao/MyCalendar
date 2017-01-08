@@ -8,12 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <fragment
-            android:id="@+id/add_list"
-            android:name="com.example.sheng.mycalendar.FragmentViewDetail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+
         <TextView
             android:id="@+id/pickDate"
             android:layout_width="match_parent"
