@@ -3,6 +3,7 @@ package com.example.sheng.mycalendar;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -47,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.drawer);
 
         context = this;
-        Log.i("MainCreate", context+"");
+        Log.i("MainCreate", context + "");
         int drawerListItem = 5;
 
         initActionBar();
@@ -59,11 +60,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-
     //================================================================================
     // Init Drawer
 
-    private void initActionBar(){
+    private void initActionBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -71,7 +71,7 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
-    private void initDrawer(){
+    private void initDrawer() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -82,14 +82,15 @@ public class MainActivity extends ActionBarActivity {
         mDrawerLayout.setDrawerListener(drawerToggle);
 
     }
-    private void initDrawerList(int ListItem){
+
+    private void initDrawerList(int ListItem) {
         drawer_menuIcon = this.getResources().obtainTypedArray(R.array.drawer_menuIcon);
         drawer_menu = this.getResources().getStringArray(R.array.drawer_menu);
 
-        List<HashMap<String,String>> lstData = new ArrayList<HashMap<String,String>>();
+        List<HashMap<String, String>> lstData = new ArrayList<HashMap<String, String>>();
         for (int i = 0; i < ListItem; i++) {
             HashMap<String, String> mapValue = new HashMap<String, String>();
-            mapValue.put("icon", Integer.toString(drawer_menuIcon.getResourceId(i,-1)));
+            mapValue.put("icon", Integer.toString(drawer_menuIcon.getResourceId(i, -1)));
             mapValue.put("title", drawer_menu[i]);
             lstData.add(mapValue);
         }
@@ -120,12 +121,18 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case R.id.cancel_action:
                 break;
+            case R.id.action_settings:
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                break;
             default:
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
     //================================================================================
     // 側選單點選事件
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
