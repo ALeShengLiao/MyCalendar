@@ -14,11 +14,6 @@
         android:icon="@drawable/ic_launcher"
         android:title="@string/action_refresh"/>
     <item
-        android:id="@+id/action_edit"
-        android:orderInCategory="2"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/action_edit"/>
-    <item
         android:id="@+id/action_info"
         android:orderInCategory="4"
         android:showAsAction="ifRoom|withText"
@@ -29,11 +24,4 @@
         android:showAsAction="ifRoom|withText"
         android:title="@string/action_search"/>
 
-    <item android:id="@+id/start_action"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/start_text" />
-
-    <item android:id="@+id/cancel_action"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/cancel_text" />
 </menu>
